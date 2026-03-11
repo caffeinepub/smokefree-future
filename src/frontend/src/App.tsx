@@ -1,4 +1,5 @@
 import { TriviaGameSection } from "@/components/TriviaGameSection";
+import { VolunteerDonateSection } from "@/components/VolunteerDonateSection";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useEffect, useRef, useState } from "react";
@@ -214,6 +215,7 @@ function Navbar() {
     { href: "#addiction", label: "Addiction" },
     { href: "#quit", label: "Benefits" },
     { href: "#game", label: "🧠 Trivia" },
+    { href: "#support", label: "🤝 Volunteer" },
     { href: "#help", label: "Get Help" },
   ];
 
@@ -250,7 +252,7 @@ function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              data-ocid={`nav.${link.href.replace("#", "")}.link`}
+              data-ocid={`nav.${link.href.replace("#", "").replace("-", "_")}.link`}
               className={`px-4 py-2 rounded-full text-sm font-body font-medium transition-all ${
                 scrolled
                   ? "text-foreground hover:bg-primary/10 hover:text-primary"
@@ -374,7 +376,7 @@ function HeroSection() {
           that knows the truth about tobacco — and chooses health.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up delay-400">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up delay-400 flex-wrap">
           <a href="#dangers">
             <Button
               size="lg"
@@ -389,6 +391,15 @@ function HeroSection() {
               className="bg-white/20 text-white border border-white/40 hover:bg-white/30 font-body font-semibold text-base px-8 py-6 rounded-full backdrop-blur-sm transition-all hover:-translate-y-0.5"
             >
               🧠 Take the Trivia
+            </Button>
+          </a>
+          <a href="#support">
+            <Button
+              size="lg"
+              data-ocid="hero.support.button"
+              className="bg-white/20 text-white border border-white/40 hover:bg-white/30 font-body font-semibold text-base px-8 py-6 rounded-full backdrop-blur-sm transition-all hover:-translate-y-0.5"
+            >
+              🤝 Get Involved
             </Button>
           </a>
           <a href="#help">
@@ -786,6 +797,7 @@ function Footer() {
               { href: "#addiction", label: "Addiction" },
               { href: "#quit", label: "Benefits of Quitting" },
               { href: "#game", label: "🧠 Trivia" },
+              { href: "#support", label: "🤝 Volunteer" },
               { href: "#help", label: "Get Help" },
             ].map((link) => (
               <a
@@ -832,6 +844,7 @@ export default function App() {
         <AddictionSection />
         <QuitSection />
         <TriviaGameSection />
+        <VolunteerDonateSection />
         <HelpSection />
       </main>
       <Footer />
